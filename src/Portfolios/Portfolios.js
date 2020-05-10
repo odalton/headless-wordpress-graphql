@@ -1,16 +1,7 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Link, useParams, useLocation } from 'react-router-dom';
-
-const usePageViews = () => {
-  let location = useLocation();
-  React.useEffect(() => {
-    console.log(location)
-  }, [location]);
-  return location
-}
-
+import { Link } from 'react-router-dom';
 
 const Portfolios = () => (
 
@@ -52,8 +43,7 @@ const Portfolios = () => (
                             const images = portfolio.node.portfolioMeta.image.mediaDetails.sizes;
                             const imageThumbnail = images.find(element => element.name === 'medium');                        
                             return (
-                                <div key={key}>  
-                                         {usePageViews}                         
+                                <div key={key}>                         
                                     <h2>{portfolio.node.title}</h2>
                                     <img alt="" src={imageThumbnail.sourceUrl} />
                                     <Link to={`/portfolio/${portfolio.node.slug}`}>
@@ -63,12 +53,6 @@ const Portfolios = () => (
                             )
                         })
                     }
-
-<div class="mdc-card">
-card
-</div>
-
-
                 </div>
 
                 
